@@ -9,7 +9,7 @@ r"""
 	from thompson.orbits        import print_component_types
 	from thompson.automorphism  import *
 	from thompson.examples      import *
-r"""
+"""
 import os
 import sys
 
@@ -193,7 +193,7 @@ class Automorphism(Homomorphism):
 			>>> h == h2
 			True
 		
-		r"""
+		"""
 		domain = Generators.from_dfs(domain)
 		range  = Generators.from_dfs(range)
 		if labels is None:
@@ -353,7 +353,7 @@ class Automorphism(Homomorphism):
 			True
 			>>> ~psi ** 2 == ~psi * ~psi == psi ** -2
 			True
-		r"""
+		"""
 		if not isinstance(power, int):
 			raise TypeError("Power must be an integer (instead of {}).".format(power))
 		
@@ -542,7 +542,7 @@ class Automorphism(Homomorphism):
 		return intersection_of_trees(self.domain, self.range)
 	
 	def orbit_type(self, y, basis=None):
-		r"""Returns the orbit type of *y* with respect to the given *basis*. If *basis* is omitted, the :meth:`quasi-normal basis <compute_quasinormal_basis>` is used by default. Also returns a dictionary of computed images, the list (:paperref:`eq:uorb`) from the paper.
+		"""Returns the orbit type of *y* with respect to the given *basis*. If *basis* is omitted, the :meth:`quasi-normal basis <compute_quasinormal_basis>` is used by default. Also returns a dictionary of computed images, the list (:paperref:`eq:uorb`) from the paper.
 		
 		:returns: A triple ``(ctype, images, type_b_data)``.
 		
@@ -791,7 +791,7 @@ class Automorphism(Homomorphism):
 		return terminal, initial
 	
 	def _descend_to_complete_infinite(self, endpt):
-		r"""A really crude use of the lemma described in AJD's email.
+		"""A really crude use of the lemma described in AJD's email.
 		
 		**Lemma.** Let :math:`b` be the bank of a pond. There is a :math:`\Gamma \in A^*` such that :math:`b\Gamma` belongs to a doubly-infinite :math:`\phi`-orbit that meets :math:`X`.
 		r"""
@@ -817,7 +817,7 @@ class Automorphism(Homomorphism):
 			return None
 	
 	def dump_QNB(self):
-		r"""A convenience method for printing the quasinormal basis :math:`X`. The :math:`X`-components of the elements :math:`x \in X` are displayed.
+		"""A convenience method for printing the quasinormal basis :math:`X`. The :math:`X`-components of the elements :math:`x \in X` are displayed.
 		
 			>>> load_example('example_5_3').dump_QNB()
 			x1 a1 a1 a1 Left semi-infinite component with characteristic (-1, a1)
@@ -849,7 +849,7 @@ class Automorphism(Homomorphism):
 			0110 -> 10
 			Period 3
 			010 -> 0111 -> 11
-			r"""
+			"""
 		formatter = format_cantor if cantor else format
 		for period, list_of_orbits in self.periodic_orbits.items():
 			print("Period", period)
@@ -1076,7 +1076,7 @@ class Automorphism(Homomorphism):
 	
 	@staticmethod
 	def _remove_from_start(tail, characteristic):
-		r"""Makes a copy of *tail* and removes as many copies of *multiplier* from the start of the copy as possible. Returns a tuple *(k, tail copy)* where *k* is the number of steps forward into the orbit we made.
+		"""Makes a copy of *tail* and removes as many copies of *multiplier* from the start of the copy as possible. Returns a tuple *(k, tail copy)* where *k* is the number of steps forward into the orbit we made.
 			
 			>>> tail = from_string('a1 a2 a1 a2 a1 a2 a3')
 			>>> multiplier = from_string('a1 a2')
@@ -1168,7 +1168,7 @@ class Automorphism(Homomorphism):
 			True
 			>>> load_example('nathan_pond_example').preserves_order()
 			False
-		r"""
+		"""
 		indices = range(len(self.range) - 1)
 		return all(self.range[i] < self.range[i+1] for i in indices)
 	
@@ -1250,7 +1250,7 @@ class Automorphism(Homomorphism):
 		return Fraction(numerator, denominator) % 1
 	
 	def commutes(self, other):
-		r"""A shorthand for the expression ``self * other == other * self``.
+		"""A shorthand for the expression ``self * other == other * self``.
 		
 			>>> x = random_automorphism()
 			>>> x.commutes(x)
@@ -1334,7 +1334,7 @@ class Automorphism(Homomorphism):
 		.. caution:: This is an experimental feature based on [SD10]_.
 		
 		.. todo:: This method is badly named; something like ``is_revealed_by(basis)`` would be better.
-		r"""
+		"""
 		return self.test_revealing(domain) is None
 	
 	def periodic_points(self, include_intervals=True):
@@ -1535,7 +1535,7 @@ class Automorphism(Homomorphism):
 		.. todo:: doctests
 		
 		.. caution:: This is an experimental feature based on [BBG11]_.
-		r"""
+		"""
 		if period not in self.cycle_type:
 			raise ValueError("There are no orbits of period {}.".format(period))
 		orbits = self.periodic_orbits[period]

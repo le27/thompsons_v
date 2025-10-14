@@ -8,7 +8,7 @@ r"""
 	from thompson          import *
 	from thompson.word     import format
 	from thompson.infinite import *
-r"""
+"""
 from collections import defaultdict
 from functools   import partial
 from io          import StringIO
@@ -141,7 +141,7 @@ class InfiniteAut(Automorphism):
 		This information allows us to (attempt to) compute the images of :math:`X` under a conjugator given only the images of *roots*.
 		
 		.. seealso:: Definition :paperref:`EqCl` through to Lemma :paperref:`lem:effsplit`.
-		r"""
+		"""
 		G = self._congruence_graph()
 		self._simplify_graph(G, type_c)
 		roots = self._reduce_to_forest(G)
@@ -295,7 +295,7 @@ class InfiniteAut(Automorphism):
 		.. warning:: If the :meth:`~thompson.infinite.InfiniteAut.power_conjugacy_bounds` are reasonable large (say > 30), this method could potentially take a long time!
 		
 		.. seealso:: Algorithm :paperref:`alg:pcRI` of the paper.
-		r"""
+		"""
 		if not isinstance(other, InfiniteAut):
 			raise StopIteration
 		if cheat:
@@ -326,7 +326,7 @@ class InfiniteAut(Automorphism):
 			return None
 	
 	def power_conjugacy_bounds(self, other):
-		r"""Compute the bounds :math:`\hat a, \hat b` on powers which could solve the power conjugacy problem.
+		"""Compute the bounds :math:`\hat a, \hat b` on powers which could solve the power conjugacy problem.
 		
 			>>> example_6_8_psi.power_conjugacy_bounds(example_6_8_phi)
 			(9, 1)
@@ -378,7 +378,7 @@ class InfiniteAut(Automorphism):
 	
 	@staticmethod
 	def compute_bounds(s_parts, o_parts):
-		r"""Computes the bounds :math:`\hat a, \hat b` (in terms of the partitions :math:`P, Q` given by *s_parts* and *o_parts*) as in eqns (14) and (15) of the paper.
+		"""Computes the bounds :math:`\hat a, \hat b` (in terms of the partitions :math:`P, Q` given by *s_parts* and *o_parts*) as in eqns (14) and (15) of the paper.
 		
 			>>> def bounds(s, o):
 			... 	P = s.minimal_partition()

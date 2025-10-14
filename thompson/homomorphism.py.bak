@@ -37,7 +37,7 @@ class Homomorphism:
 
 	:ivar domain_relabeller: the homomorphism which maps relabelled words back into the original algebra that this automorphism came from.
 	:ivar range_relabeller: the same.
-	r"""
+	"""
 
 	#Initialisation
 	def __init__(self, domain, range, reduce=True):
@@ -131,7 +131,7 @@ class Homomorphism:
 			Homomorphism: V(2, 2) -> V(2, 2) specified by 2 generators (after expansion and reduction).
 			x1 -> x2
 			x2 -> x1
-		r"""
+		"""
 		#similar to word._reduce and Generator.test_generates_algebra
 		#This method ensures that self.domain.minimal_expansion(self) == self.domain after initialisation.
 		i = 0
@@ -269,7 +269,7 @@ class Homomorphism:
 
 	#Simple operations on homomorphisms
 	def __eq__(self, other):
-		r"""We can test for equality of homomorphisms by using Python's equality operator ``==``.
+		"""We can test for equality of homomorphisms by using Python's equality operator ``==``.
 		The Python integer ``1`` can be used as a shorthand for the identity of the current homomorphism's algebra.
 			
 			>>> phi = random_automorphism()
@@ -333,7 +333,7 @@ class Homomorphism:
 			>>> sig = random_signature()
 			>>> Homomorphism.identity(sig) == 1
 			True
-		r"""
+		"""
 		d = Generators.standard_basis(signature)
 		r = Generators.standard_basis(signature)
 		from .periodic import PeriodicAut
@@ -472,7 +472,7 @@ class Homomorphism:
 		r"""This method accepts a *word* which ends in a lambda and extracts the arguments of the lambda. The image of each argument is computed (or looked up in the cache), proceeding recursively if neccessary. Once we have obtained of the images we need, the images are concatenated and standardised, forming the image of *word*. This image is cached and returned.
 
 		:raises ValueError: if the last letter in *word* is not a lambda.
-		r"""
+		"""
 		subwords = lambda_arguments(word)
 		letters = _concat(self._compute_image(word, sig_in, sig_out, cache) for word in subwords)
 		letters = standardise(letters, sig_out)
@@ -582,7 +582,7 @@ class Homomorphism:
 		return output.getvalue()
 		
 	def __repr__(self):
-		r"""A tweaked version of :meth:`__str__`.
+		"""A tweaked version of :meth:`__str__`.
 		This produces a string representation which can be passed to :meth:`from_string` to reobtain the Homomorphism we started with.
 		
 			>>> f = random_automorphism()
@@ -698,7 +698,7 @@ class Homomorphism:
 	\left\{ \begin{array}{ccrl>{\quad}c<{\quad}ccc}
 r""" + body + r"""
 	\end{array} \right.
-\end{equation*}r"""
+\end{equation*}"""
 		else:
 			return body
 	
@@ -722,7 +722,7 @@ r""" + body + r"""
 	
 	#Relabelling
 	def add_relabellers(self, domain_relabeller, range_relabeller):
-		r""":raises LookupError: if a relabeller is provided and the relabeller's signature does not match that of *domain* or *range*
+		""":raises LookupError: if a relabeller is provided and the relabeller's signature does not match that of *domain* or *range*
 		:raises TypeError: if a relabeller is provided and the relabeller's signature does not match that of *domain* or *range* (as appropriate)
 		r"""
 		if (domain_relabeller is None) != (range_relabeller is None):
@@ -766,7 +766,7 @@ r""" + body + r"""
 		return self.domain_relabeller.image_of_set(self.domain), self.range_relabeller.image_of_set(self.range)
 	
 	def gradients(self):
-		r"""Interprets the current homomorphism as a piecewise linear map, and returns the list of gradients of each linear piece. The :math:`i` th element of this list is the gradient of the affine map sending ``self.domain[i]`` to ``self.range[i]``.
+		"""Interprets the current homomorphism as a piecewise linear map, and returns the list of gradients of each linear piece. The :math:`i` th element of this list is the gradient of the affine map sending ``self.domain[i]`` to ``self.range[i]``.
 		
 		:rtype: :class:`~py3:list` of :class:`~py3:fractions.Fraction` s.
 		

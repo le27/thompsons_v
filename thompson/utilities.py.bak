@@ -1,6 +1,6 @@
 from .generators import Generators
 
-r"""Functions whose definitions we dont want cluttering other modules' source code.r"""
+r"""Functions whose definitions we dont want cluttering other modules' source code."""
 
 def intersection_of_trees(domain, range):
 	r"""Given the leaves A and B of two trees (i.e. bases), computes the leaves (basis) X of the tree intersection A & B.

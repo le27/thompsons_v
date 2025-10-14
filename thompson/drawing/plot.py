@@ -2,7 +2,7 @@ from collections import defaultdict
 
 from ..generators import Generators
 
-import pkg_resources
+import importlib.metadata
 
 PADDING = 40
 SCALE   = 400

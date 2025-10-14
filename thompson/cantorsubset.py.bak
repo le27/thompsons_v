@@ -5,7 +5,7 @@ r"""
 	from thompson.examples.random import random_basis, random_generators
 	from thompson.word            import Word
 	import random
-r"""
+"""
 
 from .word       import Word, format_cantor, lambda_arguments
 from .generators import Generators
@@ -82,7 +82,7 @@ class CantorSubset(Generators):
 			>>> X = CantorSubset((2,1), ["1"])
 			>>> X.simplify(); print(X)
 			[1]
-		r"""
+		"""
 		self.expand_away_lambdas()
 		self.sort()
 		

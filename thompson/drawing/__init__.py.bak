@@ -2,7 +2,7 @@ r"""
 .. testsetup::
 
 	from thompson.drawing import *
-r"""
+"""
 
 from .plot       import plot as plot_svg
 from .forest     import forest_code

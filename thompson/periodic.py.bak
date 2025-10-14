@@ -3,7 +3,7 @@ r"""
 	
 	from thompson.periodic import *
 	from thompson.examples import *
-r"""
+"""
 
 from collections import defaultdict, deque
 
@@ -140,7 +140,7 @@ class PeriodicAut(Automorphism):
 		
 		.. todo:: Maybe this should be 0 to order if the identity is permitted and 1 to order otherwise?
 		
-		.. seealso:: Section :paperref:`torPower` of the paper.r"""
+		.. seealso:: Section :paperref:`torPower` of the paper."""
 		if identity_permitted:
 			return self.order, other.order
 		else:

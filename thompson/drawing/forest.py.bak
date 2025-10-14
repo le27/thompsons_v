@@ -37,7 +37,7 @@ def forest_code(aut,
 	:param bool LTR: if True and if horiz is True, draw the domain tree to the left of the range tree. If horiz is True but LTR is false, draw the domain tree to the right of the range tree.
 	:param bool standalone: If True, create a standalone LaTeX file. Otherwise just create TikZ code.
 	:param bool draw_revealing: Should attractor/repeller paths be highlighted in red? 
-	r"""
+	"""
 	if name.startswith('$') and not name.endswith('$'):
 		raise ValueError("Arrow names must end with a $ if they begin with a $.")
 	

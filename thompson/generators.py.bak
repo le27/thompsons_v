@@ -4,7 +4,7 @@ r"""
 	from thompson.word       import Word, format
 	from thompson.generators import *
 	from thompson.examples   import *
-r"""
+"""
 from copy        import copy
 from collections import defaultdict, Counter
 from collections.abc import Iterable
@@ -173,7 +173,7 @@ class Generators(list):
 			True
 			>>> g.append('x2 a1'); g.is_free()
 			False
-		r"""
+		"""
 		return self.test_free() == (-1, -1)
 
 	def preorder_traversal(self):
@@ -252,7 +252,7 @@ class Generators(list):
 		return missing
 
 	def generates_algebra(self):
-		r"""Returns True if this set generates all of :math:`V_{n,r}`. Otherwise returns False.
+		"""Returns True if this set generates all of :math:`V_{n,r}`. Otherwise returns False.
 
 			>>> from random import randint
 			>>> arity = randint(2, 5); alphabet_size = randint(2, 10)
@@ -397,7 +397,7 @@ class Generators(list):
 	
 	@classmethod
 	def from_dfs(cls, string):
-		r"""Creates bases correponding to binary trees via a string of 1s and 0s correponding to branches and carets respectively. See :meth:`~thompson.automorphism.Automorphism.from_dfs`. The *string* can also be specified as a :class:`~py3:int`, in which case it is replaced by its base 10 string representation.
+		"""Creates bases correponding to binary trees via a string of 1s and 0s correponding to branches and carets respectively. See :meth:`~thompson.automorphism.Automorphism.from_dfs`. The *string* can also be specified as a :class:`~py3:int`, in which case it is replaced by its base 10 string representation.
 		
 			>>> print(Generators.from_dfs("100"))
 			[x1 a1, x1 a2]
@@ -516,7 +516,7 @@ class Generators(list):
 			>>> y.is_basis()
 			False
 
-		r"""
+		"""
 		if not isinstance(signature, Signature):
 			signature = Signature(*signature)
 		if (self.signature.arity > signature.arity or

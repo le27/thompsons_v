@@ -7,7 +7,7 @@ r"""
 	from thompson.generators    import Generators
 	from thompson.mixed         import *
 	from thompson.examples      import *
-r"""
+"""
 
 __all__ = ["MixedAut"]
 
@@ -40,7 +40,7 @@ class MixedAut(Automorphism):
 		.. seealso:: This jargon comes from Theorem :paperref:`decomp`.
 		
 		This is a convenience method which produces the free factors :math:`\psi_P` and :math:`\psi_I` from :math:`\psi`.
-		r"""
+		"""
 		p, i = self._partition_basis(self.quasinormal_basis)
 		p_factor = self.free_factor(p)
 		i_factor = self.free_factor(i)
@@ -125,7 +125,7 @@ class MixedAut(Automorphism):
 			x2 a1 ~>    y1 a3 a1 => y1 a2       ~> x1 a3   
 			x2 a2 ~>    y1 a3 a2 => y1 a1 a2    ~> x1 a2 a2
 			x2 a3 ~>    y1 a3 a3 => y1 a1 a1    ~> x1 a2 a1
-		r"""
+		"""
 		if len(generators) == 0:
 			raise ValueError('Must provide at least one generator.')
 		#1. Decide how to relabel *generators* as elements of V_n,s
@@ -226,7 +226,7 @@ class MixedAut(Automorphism):
 		r"""Checks the sizes of a partition of two quasinormal bases to see if they might possibly describe conjugate automorphisms.
 		
 		:returns: None if we discover conjugacy is impossible. Otherwise, returns a pair of booleans *(pure_periodic, pure_infinite)*. Note that even if such a pair is returned, we do **not** know for certain that conjugacy is possible.
-		r"""
+		"""
 		s_qnf_p, s_qnf_i = self._partition_basis(self.quasinormal_basis)
 		o_qnf_p, o_qnf_i = other._partition_basis(other.quasinormal_basis)
 		

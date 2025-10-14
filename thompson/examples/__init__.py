@@ -6,7 +6,7 @@
 """
 
 import os.path
-import pkg_resources
+import importlib.metadata
 import string
 from itertools import chain
 

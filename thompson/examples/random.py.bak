@@ -2,7 +2,7 @@ r"""
 .. testsetup::
 	from thompson                 import *
 	from thompson.examples.random import *
-r"""
+"""
 
 from random import randint, shuffle 
 from copy   import copy
@@ -63,7 +63,7 @@ def random_basis(signature, num_expansions, cls=Generators):
 	At the moment, this is only used internally and experimentally.
 	
 	.. note:: This does not generate *bases* uniformly at random. For instance, take :math:`V_{n,r} = V_{2,1}` and let *num_expansions = 3*. The first expansion always gives the basis :math:`[x\alpha_1, x\alpha_2]`. Expanding this twice produces give six bases, one of which appears twice. (To see this, enumerate the rooted binary trees with four leaves.)
-	r"""
+	"""
 	basis = cls.standard_basis(signature)
 	for _ in range(num_expansions):
 		i = randint(0, len(basis) - 1)
@@ -143,7 +143,7 @@ def random_conjugate_periodic_pair(signature, num_expansions):
 
 @needs_defaults
 def random_conjugate_infinite_pair(signature, num_expansions):
-	r"""The same as :func:`random_conjugate_pair`, except :math:`\psi` is chosen to be a :func:`random_infinite_automorphism`.r"""
+	r"""The same as :func:`random_conjugate_pair`, except :math:`\psi` is chosen to be a :func:`random_infinite_automorphism`."""
 	psi = random_infinite_automorphism(signature, num_expansions)
 	rho = random_automorphism(signature)
 	phi = ~rho * psi * rho

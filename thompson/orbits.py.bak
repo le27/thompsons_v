@@ -3,7 +3,7 @@ r"""
 	
 	from thompson        import *
 	from thompson.orbits import *
-r"""
+"""
 
 from collections import namedtuple
 
