@@ -6,7 +6,7 @@
 """
 
 import os.path
-import importlib.metadata
+from importlib.resources import files
 import string
 from itertools import chain
 
@@ -36,7 +36,7 @@ def load_example(name):
 	try:
 		alt = aliases[name]
 	except KeyError:
-		path = pkg_resources.resource_filename("thompson.examples", name + '.aut')
+		path = str(files("thompson.examples").joinpath(name + '.aut'))
 		aut = Automorphism.from_file(path)
 		cache[name] = aut
 	else:
@@ -47,7 +47,7 @@ def retreive_aliases():
 	global aliases
 	aliases = dict()
 	remove_whitespace = str.maketrans('', '', string.whitespace)
-	path = pkg_resources.resource_filename("thompson.examples", "aliases.txt")
+	path = str(files("thompson.examples").joinpath("aliases.txt"))
 	with open(path, encoding='utf-8') as f:
 		for line in f:
 			alias, name = line.translate(remove_whitespace).split('=')
