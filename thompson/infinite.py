@@ -169,7 +169,7 @@ class InfiniteAut(Automorphism):
 				if head1 == head2:
 					continue
 				data = dict(start_tail = tail1, power = pow2 - pow1, end_tail = tail2)
-				G.add_edge(head1, head2, data)
+				G.add_edge(head1, head2, **data)
 				assert self.repeated_image(head1.extend(tail1), pow2 - pow1) == head2.extend(tail2)
 		return G
 	
@@ -183,7 +183,7 @@ class InfiniteAut(Automorphism):
 			assert self.repeated_image(word, type_b_data['power']) == replacement.extend(type_b_data['end_tail'])
 			
 			#Use the scheme of Lemma 5.24 to avoid type C words.
-			for source, _, incoming in G.in_edges_iter(word, data=True):
+			for source, _, incoming in G.in_edges(word, data=True):
 				if source == replacement:
 					continue
 				data = dict(
@@ -194,7 +194,7 @@ class InfiniteAut(Automorphism):
 				G.add_edge(source, replacement, data)
 				assert self.repeated_image(source.extend(data['start_tail']), data['power']) == replacement.extend(data['end_tail'])
 				  
-			for _, target, outgoing in G.out_edges_iter(word, data=True):
+			for _, target, outgoing in G.out_edges(word, data=True):
 				if target == replacement:
 					continue
 				data = dict(
@@ -213,8 +213,8 @@ class InfiniteAut(Automorphism):
 	def _reduce_to_forest(G):
 		"""Removes edges from G so that each connected component is a tree."""
 		from networkx.algorithms.traversal.depth_first_search import dfs_edges
-		unseen_nodes = set(G.nodes_iter())
-		unvisisted_edges = set(G.edges_iter())
+		unseen_nodes = set(G.nodes())
+		unvisisted_edges = set(G.edges())
 		roots = []
 		
 		while unseen_nodes:
@@ -225,7 +225,7 @@ class InfiniteAut(Automorphism):
 				_, target = edge
 				unseen_nodes.remove(target)
 		
-		to_remove = [e for e in G.edges_iter() if e in unvisisted_edges]
+		to_remove = [e for e in G.edges() if e in unvisisted_edges]
 		G.remove_edges_from(to_remove)
 		return roots
 	
@@ -489,7 +489,7 @@ def image_for_type_b(word, chosen_endpoint, images, roots, graph, aut):
 	if word in roots:
 		return chosen_endpoint
 	
-	predecessor, _, edge_data = next(graph.in_edges_iter(word, data=True))
+	predecessor, _, edge_data = next(iter(graph.in_edges(word, data=True)))
 	predecessor_image = images[predecessor]
 	
 	u = chosen_endpoint.extend(edge_data['end_tail'])     #w   Delta
@@ -523,7 +523,7 @@ def dump_graph(roots, graph):
 		print('type B elements:')
 		for node in dfs_preorder_nodes(graph, root):
 			print('\tEdges out of', node)
-			for source, target in graph.out_edges_iter(node):
+			for source, target in graph.out_edges(node):
 				data = graph[source][target]
 				print('\t\tto', target, 'with data\n\t\t\t', fmt_triple(data))
 
@@ -531,7 +531,7 @@ def verify_graph(aut, roots, graph):
 	from networkx.algorithms.traversal.depth_first_search import dfs_preorder_nodes
 	for i, root in enumerate(roots):
 		for node in dfs_preorder_nodes(graph, root):
-			for source, target in graph.out_edges_iter(node):
+			for source, target in graph.out_edges(node):
 				data = graph[source][target]
 				assert aut.repeated_image(source.extend(data['start_tail']), data['power']) == target.extend(data['end_tail'])
 
