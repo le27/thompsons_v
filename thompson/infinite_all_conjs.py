@@ -1,25 +1,25 @@
-r"""
-.. testsetup::
+#r"""
+#.. testsetup::
 	
-	from collections import deque
-	from fractions   import gcd
-	from pprint      import pprint
+from collections import deque
+from math import gcd
+from pprint      import pprint
 	
-	from thompson          import *
-	from thompson.word     import format
-	from thompson.infinite import *
-r"""
+from thompson          import *
+from thompson.word     import format
+from thompson.infinite import *
+#r"""
 from collections import defaultdict
 from functools   import partial
 from io          import StringIO
 from itertools   import chain, permutations
 
-from .number_theory import prod
-from .word          import Word, root, format
-from .generators    import Generators
-from .homomorphism  import format_table
-from .automorphism  import Automorphism
-from .mixed         import MixedAut
+from thompson.number_theory import prod
+from thompson.word          import Word, root, format
+from thompson.generators    import Generators
+from thompson.homomorphism  import format_table
+from thompson.automorphism  import Automorphism
+from thompson.mixed         import MixedAut
 
 __all__ = ["InfiniteAut"]
 
@@ -105,7 +105,7 @@ class InfiniteAut(Automorphism):
 				return rho
 		return None
     
-
+    
 	def all_conjugators(self, other):
 		"""We can determine if two purely infinite automorphisms are conjugate by breaking down the quasi-normal basis into :meth:`equivalence classes <equivalence_data>`.
 		
@@ -163,7 +163,6 @@ class InfiniteAut(Automorphism):
 			if self * rho == rho * other:
 				conjs.append(rho)
 		return conjs
-    	
 
 
 	def _split_basis(self):
